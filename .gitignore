@@ -1,0 +1,18 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Office temp files
+~$*.pptx
+~$*.docx
+*.tmp
+
+# Python / notebooks
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Outputs and exports
+output/
+exports/
+*.pdf~
