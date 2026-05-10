@@ -1,6 +1,8 @@
 # Aurora Insurance — Scenario and Incident Analysis
 
-**Purpose:** Market context for MindMap's insurance vertical. Aurora is a behavioral signal insurance platform that failed due to the absence of adequate security architecture. This document establishes what happened, why it matters, and what it confirms about the insurance vertical opportunity.
+**Classification:** Research context for MindMap insurance vertical  
+**Use:** Informs Layer 4 architecture decisions and individual report framing  
+**Do not reference Aurora by name in external MindMap materials**
 
 ---
 
@@ -10,53 +12,47 @@
 |---|---|
 | Name | Aurora Insurance |
 | Sector | Life and health insurance, adjacent reinsurance |
-| Size | 5,200 employees, 8 million policyholders across 11 European countries |
-| Assets | €18B under management |
-| HQ | Amsterdam, with major offices in Munich, Madrid, Warsaw |
-| Data held | Health claims, genetic test results, HIV status, mental health records, behavioral profiles (search trends, app usage, wearable data) |
-| Technology | ML-driven underwriting on behavioral signals; hybrid Azure/private cloud; AuroraVitality opt-in wellness app |
+| Size | 5,200 employees, 8 million policyholders, 11 European countries |
+| AUM | €18 billion |
+| HQ | Amsterdam, with offices in Munich, Madrid, Warsaw |
+| Products | Term life, whole-life, private health, chronic condition specialists, B2B group life/health, AuroraVitality wellness app |
+| Tech stack | Hybrid Azure/private cloud, ML-driven underwriting, behavioral signal ingestion, early quantum-classical portfolio optimization |
 
-Aurora was, until the breach, considered a market leader. Their ML underwriting was 18% more accurate than the market average. Their reserves were more capital-efficient. They won a Best Innovation prize from the European Insurance Federation. The CFO and board loved the model.
+## What Made Aurora Valuable — and Vulnerable
 
-The CISO had been warning the board about quantum risk for two years.
+Aurora had built a competitive moat out of behavioral data. While the rest of the European life and health market was still arguing about whether to use credit bureau data, Aurora had been training ML models on aggregated, opt-in digital behavior signals — search trends, app usage, fitness tracker data — for nearly a decade. By 2025, their underwriting was 18% more accurate than the market average.
 
----
+That moat was the problem. The more sensitive and long-lived the data, the more valuable it is to a patient attacker. Aurora's genetic profiles, HIV status records, mental health claims, and behavioral histories were exactly the kind of data worth waiting years to decrypt. The competitive advantage and the attack surface were the same thing.
 
 ## The Incident
 
-**2023:** A cloud engineer's privileged credentials were compromised through a sophisticated phishing attack. Over four months, an attacker exfiltrated approximately 1.2 TB of encrypted data — claims files, behavioral profiles, genetic test results — along with associated metadata (claim IDs, policy types, dates). The exfiltration was deliberately slow to stay below volume-based detection thresholds. No alert was triggered.
+**When the breach actually happened:** Late 2023. A cloud engineer's privileged credentials were compromised through a targeted phishing operation. Over four months, an attacker exfiltrated approximately 1.2 TB of encrypted data — claims files, behavioral profiles, genetic test results — along with associated metadata. The exfiltration was deliberately slow and low-volume to stay below volumetric detection thresholds. Classic advanced persistent threat behavior.
 
-**2023–2026:** The attacker stored the encrypted data and waited. AES-256 encryption was not broken classically. What was attacked was the key exchange mechanism (RSA/ECC used during key establishment) — consistent with emerging quantum-assisted cryptanalysis. The attacker did not need to decrypt in 2023. They needed to wait until the hardware existed.
+**What the attacker did with it:** Nothing, immediately. The data was stored. The attacker waited.
 
-**Early 2026:** Partial decryption capability was demonstrated. A forum post appeared with a sample of Aurora customer data — encrypted, but with readable metadata. Aurora confirmed the data was real.
+**When it became public:** April 2026. A forum post appeared with a sample of Aurora customer data — encrypted, but with metadata intact. Claim IDs, policy types, dates. Aurora confirmed the data was real. Three weeks later, the same actor posted again — this time with partial decryption. Tens of thousands of records, including HIV status, therapy notes, genetic predisposition data, and behavioral profiles linking individuals to specific search histories, appeared on paste sites. The message: *"We harvested two years ago. We waited. Now you understand."
 
-**Three weeks later:** The full decryption was posted publicly. Genetic profiles, HIV status, mental health claims, behavioral histories linking individuals to specific search histories — all on a paste site. The post was signed: *"We harvested two years ago. We waited. Now you understand."*
+**The press call the next morning had one question. The CFO didn't have an answer.**
 
-**The press call:** The CFO had no answers. The CISO had been right for two years. The board had deferred a €4M assessment into Q3 2026. That decision had already generated the liability before the assessment was even scheduled to start.
+## Why AES-256 Wasn't the Problem
 
----
+A common misreading of this incident is that the encryption failed. It didn't — not in the classical sense. AES-256 was not broken. What likely occurred was one of two things:
+
+1. A quantum-assisted attack on the **key exchange mechanism** (RSA/ECC used during key establishment, not AES itself). The cipher was fine. The handshake was vulnerable.
+2. A side-channel compromise of key material that the investigation didn't catch.
+
+This distinction matters for MindMap. The lesson is not "use stronger encryption." The lesson is that **long-lived sensitive data under classical key exchange is an HNDL target by design**. The data should either not exist in identifiable form by the time quantum decryption is viable, or it should be under hybrid PQC schemes from the start.
 
 ## Why the CISO Was Right and Ignored
 
-The failure was not technical ignorance. It was a governance misjudgment:
+The CISO had been warning the board about quantum risk for two years. The board allocated €4M to a post-quantum readiness assessment — due to start in Q3 2026. It never started.
 
-- The threat felt distant and probabilistic. A €4M budget deferral felt like a reasonable commercial decision.
-- The CFO framed cryptographic infrastructure as a cost center, not a liability exposure.
-- The business case for ML-driven underwriting was concrete and revenue-generating. The case for post-quantum readiness was abstract and defensive.
-- ENISA had been issuing formal guidance on PQC integration since 2021. NIST finalised its PQC standards (FIPS 203, 204, 205) in August 2024. Aurora's Q3 2026 assessment was already behind the regulatory curve, not just the threat curve.
+The failure wasn't technical incompetence. It was a **risk perception gap**:
+- The threat felt distant and probabilistic
+- The CFO framed cryptographic infrastructure as a cost center, not a liability
+- The business case for ML underwriting was concrete and revenue-generating; the case for PQC readiness was abstract and defensive
+- No one at board level had accountability for the gap between the CISO's warning and a budget decision
 
-The €4M deferred became a €180M–€460M liability. See `cost-of-inaction.md` for the full arithmetic.
+By early 2026, ENISA had been issuing PQC guidance since 2021. NIST finalized its PQC standards (FIPS 203, 204, 205) in August 2024. The EU Commission's PQC roadmap required member states to begin national strategies by December 2026. Aurora's Q3 assessment was already behind the regulatory curve, not just the threat curve.
 
----
-
-## What This Confirms for MindMap
-
-Aurora is MindMap's insurance vertical without Layer 4. The data types are identical: behavioral signals, health outcomes, long-retention personal records. The attack surface is identical: a behavioral data platform where the value of the data increases the longer it exists.
-
-The difference is that MindMap's architecture was designed with this failure mode in mind from the start. PQC is not a future upgrade. Data minimisation is not a compliance exercise. Zero-trust access is not a post-breach patch.
-
-Aurora makes the insurance vertical argument concrete. Any insurer considering a behavioral signal partnership will ask about data security. The answer is: we built the platform that Aurora should have been.
-
----
-
-*Do not reference Aurora Insurance by name in external MindMap materials or investor decks.*
+**The €4M deferred became a €180M–€460M liability.** See `cost-of-inaction.md` for the full arithmetic.

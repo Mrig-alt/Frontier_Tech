@@ -1,40 +1,25 @@
 # Case Study: Change Healthcare (USA, 2024)
 
-**Why this matters for MindMap:** Change Healthcare is the concentration risk case. It shows what happens when a single platform becomes so central to an industry's operations that its failure does not just harm that platform — it paralyses the entire ecosystem downstream.
+**Why this matters for MindMap:** Change Healthcare is not primarily a data sensitivity story. It is a **concentration risk and systemic dependency** story. For MindMap's insurance vertical, the lesson is about what happens when a single platform becomes load-bearing infrastructure for an entire industry.
 
 ---
 
 ## What Happened
 
-Change Healthcare is a subsidiary of UnitedHealth Group that processes approximately 50% of US medical billing — the clearinghouse through which pharmacies and hospitals submit claims and get paid.
+Change Healthcare, a subsidiary of UnitedHealth Group, acts as the central clearinghouse for US medical billing — processing roughly 50% of all US medical claims. The ALPHV/BlackCat ransomware group breached the system through a Citrix remote access portal that had no MFA enabled. A known, unpatched vulnerability in a remote access gateway was the door to the largest healthcare data breach in US history.
 
-**The breach:** The ALPHVBlackCat ransomware group gained access through a Citrix remote access portal. No MFA had been implemented on this portal — a known vulnerability, publicly documented, left unpatched and unauthenticated.
+Estimated 100 to 190 million individuals affected — approximately one third of the US population.
 
-**The scale:** This is the largest healthcare data breach in US history, affecting an estimated 100–192 million individuals — roughly one in three Americans.
+## The Failures
 
-**The systemic impact:** Beyond the data theft, the attack severed the digital infrastructure that pharmacies and hospitals use to process prescriptions and get paid. Clinics operated on paper. Patients paid out-of-pocket for life-saving medications. Some healthcare providers nearly went bankrupt due to halted cash flow.
+- **No MFA on a Citrix remote access portal.** A years-old, known vulnerability, unpatched and unauthenticated. The same single-credential failure present in Aurora and Medibank, at incomparably larger scale.
+- **Systemic concentration.** When one clearinghouse processes 50% of US medical billing and it goes down, pharmacies cannot process prescriptions, hospitals cannot get paid, and clinics operate on paper. The attack did not just steal data — it severed infrastructure.
+- **UnitedHealth downplayed severity for weeks.** Congressional testimony, regulatory scrutiny, and a prolonged credibility collapse followed. Understatement in a crisis is as operationally damaging as the breach itself.
 
-**The response failure:** UnitedHealth downplayed the severity of the incident for weeks after the attack. This triggered Congressional testimony, intense regulatory scrutiny, and a credibility loss that made the eventual full disclosure more damaging, not less.
+## Relevance to MindMap
 
----
+MindMap's AuroraVitality-equivalent risk: the behavioral data pipeline for the insurance pilot. If MindMap's signal ingestion layer or correlation model goes down during a live pilot, the partner insurer's claims prevention model breaks. MindMap must not become a single point of failure in its partner's underwriting infrastructure.
 
-## What Went Wrong
+The architecture answer is the same as the security answer: **no single dependency without a fallback**. The insurance pilot data pipeline should be designed so MindMap's unavailability degrades the partner's model gracefully, not catastrophically.
 
-- No MFA on a remote access gateway — a basic, known control, absent
-- A known, unpatched Citrix vulnerability was the entry point
-- Concentration of 50% of US medical billing in a single platform created systemic risk beyond the platform itself
-- Understatement of severity in early public communications compounded regulatory and reputational damage
-
----
-
-## The Concentration Risk Lesson
-
-Change Healthcare was not primarily a data sensitivity story. It was a single-point-of-failure story. When one platform holds a disproportionate share of critical infrastructure, its security posture is not just its own business risk — it is a systemic risk to every downstream dependency.
-
-MindMap's behavioral data pipeline feeding ML underwriting represents a similar concentration risk within the insurance vertical. If that pipeline is compromised or taken offline, the insurer's underwriting model does not function. The pilot design needs resilience architecture, not just security architecture.
-
----
-
-## MindMap Implication
-
-The insurance pilot needs a defined blast-radius ceiling. If MindMap's behavioral signal pipeline is disrupted, what is the fallback for the partner insurer? What is the maximum operational dependency MindMap will accept from a single partner? Concentration risk is a design decision, not just a security one. Change Healthcare is what happens when that decision is not made explicitly.
+The governance answer from Change Healthcare: when something significant happens, say so immediately and completely. Regulators and partners treat delayed or minimized disclosure as a separate and compounding failure.

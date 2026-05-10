@@ -1,55 +1,70 @@
-# Cost of Inaction — The Aurora Arithmetic
+# Cost of Inaction — Aurora Insurance Scenario
 
-**Purpose:** Quantifies the financial exposure Aurora created by deferring a €4M security investment. This is the business case arithmetic for why MindMap builds Layer 4 first, not later.
-
----
-
-## The Deferred Decision
-
-In 2025, Aurora's board was asked to approve a €4M post-quantum readiness assessment. They deferred it to Q3 2026. The breach had already happened in 2023. The assessment, had it been approved in 2025, would not have prevented the exfiltration — but it would have triggered the migration programme that could have limited decryptability by 2026.
-
-The €4M was not a security cost. It was a risk acceptance decision made without the information to make it properly.
+**Purpose:** Provide the board-level arithmetic that frames the investment decision. These numbers are what the Aurora board needed in 2024 when they deferred the €4M post-quantum readiness assessment.
 
 ---
 
-## The Exposure Arithmetic
+## The Three Exposure Categories
 
-### GDPR Fine
-- Maximum: 4% of annual global turnover
-- Aurora annual premium revenue estimate: ~€1.5B (based on €18B AUM, 8M policyholders across life and health lines)
-- Maximum GDPR fine: **~€60M**
+### 1. Regulatory Fines
 
-### Class Action and Litigation
-- Medibank (Australia, 2022): AUD $250M+ in claims for 9.7M records
-- Scaled to Aurora: 8M policyholders, 11 GDPR jurisdictions, special-category data (genetic, health, HIV status)
-- Conservative litigation range: **€100M–€300M**
-- The 2026 Delhi HC precedent strengthens claimant positions significantly
+- GDPR maximum: 4% of global annual turnover
+- Aurora estimated annual revenue: ~€1.5B (consistent with €18B AUM and 8M policyholders across 11 EU countries at average premium €800–€1,200/year)
+- **GDPR exposure: ~€60M**
+- NIS2 and DORA penalties: additive, jurisdiction-specific, not yet finalized but material
 
-### Customer Attrition
-- Conservative attrition assumption: 5–10% of 8M policyholders cancel or do not renew
-- Average annual premium estimate: €800–€1,200 per policyholder
-- Lost annual revenue: **€32M–€96M** (recurring)
+### 2. Class Action and Litigation
 
-### Total Cost of Inaction
-| Component | Low | High |
+- Medibank (Australia, 2022): AUD $250M+ in class action claims for 9.7M records, predominantly PII and health data
+- Anthem (USA, 2015): $115M class action settlement for 78.8M records, predominantly PII
+- Aurora: 8M policyholders across 11 GDPR jurisdictions, special-category data (genetic, HIV, mental health), permanent irreversible harm, multiple concurrent class actions likely
+- Scaled range: **€100M–€300M**
+
+### 3. Customer Attrition
+
+- Conservative assumption: 5–10% of 8M policyholders do not renew following disclosure
+- 400,000–800,000 policies lost
+- At average premium €800–€1,200/year: **€32M–€96M in lost annual premium revenue**
+- This is a recurring annual loss, not a one-time figure
+
+---
+
+## Total Cost of Inaction
+
+| Category | Low | High |
 |---|---|---|
-| GDPR fine | €60M | €60M |
-| Litigation | €100M | €300M |
-| Customer attrition (annual) | €32M | €96M |
-| **Total** | **~€180M** | **~€460M** |
+| GDPR fines | €60M | €60M |
+| Litigation and class actions | €100M | €300M |
+| Customer attrition (year 1) | €32M | €96M |
+| **Total** | **€192M** | **€456M** |
+
+**Working range: €180M–€460M** (rounded, conservative)
 
 ---
 
-## The Programme Cost
+## The Investment Required to Prevent This
 
-The full remediation and prevention programme — post-quantum migration, zero-trust access architecture, data minimisation rebuild, board cyber governance — costs an estimated €15M–€25M over three years.
-
-**The ratio:** €15M–€25M to remove €180M–€460M of risk. That is 5 to 10 cents spent for every euro of exposure avoided.
-
-The original deferred assessment was €4M. The assessment alone, approved in 2025, would have been the trigger for a programme that costs roughly €20M. Instead, the same programme now runs under crisis conditions, at higher cost, with a regulator watching every step.
+| Phase | Timeframe | Cost |
+|---|---|---|
+| Immediate stabilization | 0–90 days | ~€500K |
+| Core hardening | 3–12 months | ~€6M–€9M |
+| Structural transformation | 12–36 months | ~€8M–€15M |
+| **Total programme** | **3 years** | **€15M–€25M** |
 
 ---
 
-## MindMap Implication
+## The Ratio
 
-MindMap's insurance vertical will hold behavioral signal data with long retention requirements. The data types are comparable to Aurora's. The regulatory environment is identical. Building Layer 4 correctly from the start costs a fraction of what it costs to retrofit it after an incident — and retrofitting after an incident, as Aurora demonstrates, is the optimistic scenario. The pessimistic one is Vastaamo: the company does not survive.
+The programme to prevent this costs **€15M–€25M over three years**.
+
+That is roughly **5 to 10 cents for every euro of risk it removes**.
+
+The board deferred a €4M assessment. That decision will now cost between €180M and €460M. The ratio of the deferral to the consequence is approximately **1:70 at the low end**.
+
+---
+
+## Relevance to MindMap
+
+This arithmetic is the business case for MindMap's Layer 4 being non-negotiable from day one. For any partner insurer considering the secret behavioral pilot, the question is not "can we afford to build the security layer?" The Aurora numbers answer that question. The question is whether the partner insurer understands that MindMap's Layer 4 is the reason the pilot does not create the same liability Aurora created for itself.
+
+Citing Aurora as a documented, priced, publicly visible failure makes that case in a single number: **€4M deferred became €460M in exposure**.

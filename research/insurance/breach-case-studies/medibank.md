@@ -1,53 +1,32 @@
 # Case Study: Medibank (Australia, 2022)
 
-**Why this matters for MindMap:** Medibank is the case where a company made most of the same entry-point mistakes as Aurora, suffered severe reputational damage, but survived — because they disclosed fast, refused to pay the ransom, and were transparent with customers. It is also the case that shows how data structure itself is a harm amplifier.
+**Why this matters for MindMap:** Medibank is the closest structural parallel to Aurora's actual data exposure — a health insurer with a rich, categorized claims database. What it got wrong is operationally preventable. What it got right explains why it survived.
 
 ---
 
 ## What Happened
 
-Medibank is one of Australia's largest private health insurers, holding the health records of approximately 9.7 million current and former customers.
+Hackers affiliated with the REvil ransomware group breached Medibank, one of Australia's largest private health insurers, and accessed the data of 9.7 million current and former customers. The entry point: a third-party IT contractor's credentials were stolen and used to access Medibank's network. No MFA was enforced on VPN access. One compromised contractor account opened the building.
 
-**The breach:** A third-party IT contractor's credentials were stolen and used to access Medibank's network. No MFA was enforced on VPN access. One set of credentials, full access.
+Medibank detected unusual activity and began an investigation. The attackers threatened to publish the data unless a $9.7M ransom was paid. Following Australian government guidance, Medibank refused.
 
-Excessive access rights meant the compromised account could reach sensitive claims data across the entire customer base — not just the contractor's operational scope.
+The attackers then began releasing data on the dark web — and they did it with maximum psychological intent. They sorted the leaked files into **"naughty" and "nice" lists**, deliberately exposing records related to HIV status, drug and alcohol addiction, mental health treatment, and abortion history. The categorization was not random. They used Medibank's own data structure — searchable, relational, categorized by diagnosis code — to sort by harm.
 
-Delayed containment: Medibank's detection and response timeline gave the attackers time to stage and exfiltrate data before the alarm was raised.
+## The Technical Failures
 
-**The extortion:** The attackers (affiliated with the REvil ransomware group) demanded a $9.7M ransom. Following Australian government guidance, Medibank refused to pay.
+- **No MFA on VPN access.** One contractor credential, no second factor. Direct parallel to Aurora's single phished cloud engineer credential.
+- **Excessive access rights.** One compromised account could reach sensitive claims data across the entire customer base. No least-privilege architecture, no scoped access by role or task.
+- **Detection and containment lag.** Attackers had time to map, stage, and prepare the data before the alarm was raised.
+- **Data architecture as harm amplifier.** The relational, diagnosis-coded structure of the claims database made it trivially easy for attackers to sort records by condition. For MindMap: behavioral profiles and ML feature stores are equally structured. If exfiltrated, they are equally sortable.
 
-**The weaponisation:** The attackers then published the data. Critically, they categorised the leaked files to maximise psychological damage — creating "naughty" and "nice" lists. The "naughty" list deliberately exposed customers treated for HIV status, drug and alcohol addiction, mental health issues, and abortions. This was not random data dumping. It was structured, targeted psychological warfare enabled by the fact that the data was searchable and relational.
+## What Medibank Did Right
 
----
+- **Refused to pay the ransom.** Following government guidance, Medibank did not pay. This is credited with preventing the precedent that payment stops publication.
+- **Was transparent with customers.** Medibank communicated directly and openly about what was taken. This protected them from regulatory sanction for concealment.
+- **Stock fell 18% but the company survived.** The contrast with Vastaamo is the lesson: early transparency, however painful, is survivable.
 
-## What Medibank Got Right
+## Relevance to MindMap
 
-- Refused the ransom (following government guidance)
-- Disclosed publicly and cooperated with regulators
-- Was transparent with customers about what had been taken
-- Did not understate the severity
+Medibank's core failure — one contractor credential, no MFA, excessive access rights — is exactly what MindMap's Layer 4 zero-trust architecture closes. Just-in-time access provisioning, hardware security keys on all privileged accounts, and scoped access by task mean a compromised account reaches a bounded compartment, not the full data store.
 
-This protected them from regulatory sanction for concealment. The company survived. Their stock fell approximately 18% but recovered over the following year.
-
----
-
-## What Medibank Got Wrong
-
-- No MFA on VPN access — same single-credential failure as Aurora and Anthem
-- Third-party contractor credential hygiene was inadequate
-- Excessive access rights meant blast radius was the entire customer base
-- Detection and containment timeline allowed full data staging
-
----
-
-## The Data Architecture Lesson
-
-The attackers' ability to create "naughty" and "nice" lists was not a function of how much data they stole. It was a function of how the data was structured. Searchable, relational, categorised claims records made it trivially easy to sort by diagnosis code. The harm was amplified by the architecture, not just the volume.
-
-MindMap's population-level aggregation model addresses individual re-identification at the raw data layer. But the insurance pilot's correlation study outputs — if they contain linkable metadata — could still be sorted, filtered, and weaponised in exactly the same way. Metadata stripping and differential privacy on model outputs are not theoretical requirements. Medibank is what happens when they are missing.
-
----
-
-## MindMap Implication
-
-Third-party access controls, MFA on all privileged and remote access, and data architecture that prevents post-exfiltration sorting are all non-negotiable for the insurance pilot. The entry point (contractor credentials, no MFA) is the same failure vector as Aurora's phished cloud engineer. The architectural control is the same: just-in-time access, hardware security keys, scoped permissions with no standing access to the full dataset.
+The data architecture lesson is equally important. MindMap's population-level aggregation model addresses individual re-identification risk at the platform level. But the insurance pilot's correlation study outputs must be reviewed for metadata and structural re-identification risk before delivery to the partner insurer — a relational output is still sortable by harm even if the underlying data is aggregated.
