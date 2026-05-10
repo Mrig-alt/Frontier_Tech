@@ -18,11 +18,18 @@ MindMap is a behavioral signal platform that uses Google Trends and social media
 - Each **individual report** zooms into one vertical and one named customer — meaningfully different from the group deck as required by the brief.
 - **Pharma is the anchor**: insurance and public health need pharma to validate the behavioral science first. Without pharma proving the signals work, no insurer will price them and no government will rely on them.
 
+## Why Layer 4 Is Non-Negotiable
+
+In 2026, Aurora Insurance — a behavioral signal platform structurally identical to MindMap's insurance vertical — suffered a catastrophic data breach. Genetic profiles, HIV status, mental health records, and behavioral histories of tens of thousands of customers became publicly available. The company had deferred a €4M security investment. That decision created a €180M–€460M liability.
+
+Aurora is not a cautionary tale about cybersecurity in the abstract. It is a precise description of what MindMap's insurance vertical looks like without Layer 4. Every architecture decision in Layer 4 traces directly to a documented failure at Aurora. The full analysis is in `research/insurance/`.
+
 ## Repo Structure
 
 - `docs/` – assignment briefs, clarifications, and project timeline.
 - `group-presentation/` – group deck structure, speaking scripts, and decision logic.
 - `research/` – structured research notes, stress tests, sources, and analysis by vertical.
+- `research/insurance/` – Aurora case analysis, breach case studies, regulatory exposure, and cost-of-inaction arithmetic that inform the insurance vertical and Layer 4 design.
 - `individual/` – personal folders for each team member: pharma, insurance, public-health.
 - `platform-architecture/` – MindMap platform design: data layer, quantum ML layer, cybersecurity layer.
 - `data/` – non-sensitive external datasets and processed tables (if used).

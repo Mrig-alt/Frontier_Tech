@@ -1,14 +1,26 @@
-# Layer 4: Security, Compliance & Governance
+# Layer 4: Security and Governance
 
-## Team Objective
-Ensure the Antigravity platform operates as a completely secure, zero-trust, neutral data broker. Because neural data is highly sensitive, this layer is non-negotiable and must be built "by design," not bolted on later.
+MindMap's Layer 4 is the reason regulated industries — insurance, pharma, government — can trust the platform. It is not a compliance checkbox. It is the architectural layer that separates MindMap from every behavioral signal platform that failed before it.
 
-## Core Responsibilities & Requirements
-*   **Cryptographic Standard:** Implement Post-Quantum Cryptography (PQC) across all data pipelines, fully aligned with NIST migration roadmaps to prevent "harvest now, decrypt later" attacks.
-*   **Architecture:** Enforce a strict Zero-Trust Architecture across all internal APIs and differential privacy for all exported models.
-*   **Regulatory Compliance:**
-    *   **EU AI Act (2026-2027):** Build mandatory risk management, automated logging, and audit trails to comply with "high-risk" classifications for neural/biometric systems.
-    *   **US MIND Act (2025):** Ensure strict mental privacy controls to prevent unauthorized corporate commodification of neural signals.
+## Why This Layer Exists
 
-## Collaboration
-*   **Cross-functional:** This team dictates security policies and audits Layer 1, Layer 2, and Layer 3. No code or data pipeline moves to production without passing Layer 4's compliance checks.
+In 2026, Aurora Insurance operated a behavioral signal platform that was, in every material respect, what MindMap's insurance vertical is designed to be. Behavioral data, ML-driven underwriting, long-retention health and genetic records. Aurora had no equivalent of this layer. The result was a "harvest now, decrypt later" breach that exposed the genetic profiles, HIV status, and therapy records of tens of thousands of customers. The regulatory and litigation exposure ran to €180M–€460M.
+
+Every requirement in this layer has a named failure at Aurora behind it. This is not theoretical risk management. It is documented, priced, and publicly visible.
+
+The full Aurora case analysis — including the four breach case studies (Vastaamo, Medibank, Change Healthcare, Anthem), regulatory exposure, and cost-of-inaction arithmetic — is in `research/insurance/`.
+
+## What This Layer Covers
+
+- **Zero-trust access architecture** — no standing permissions, just-in-time provisioning, hardware security keys (FIDO2/WebAuthn) on all privileged accounts
+- **Post-quantum cryptography (PQC)** — NIST-aligned, hybrid classical + CRYSTALS-Kyber for all long-retention insurance pilot data from day one, not a future upgrade
+- **Data minimisation by design** — behavioral signals retained in aggregated, non-identifiable form; raw personal data has a hard deletion date built into the architecture
+- **Differential privacy** — enforced on all model outputs, not just raw data
+- **Behavioral audit logging (UEBA)** — access pattern deviation alerts, not just volume thresholds; privileged account activity reviewed weekly during pilot
+- **Data segmentation** — health, behavioral, and genetic data stores separated with no automatic cross-pathways; a breach in one layer cannot reach the others
+- **Third-party data handling protocol** — partner insurer obligations contractually defined; audit rights, breach notification timelines, minimum encryption standards
+- **Formal risk register** — named owners, review dates, and explicit risk acceptance decisions for any deferred requirement
+
+## Files
+
+- `aurora-breach-lessons.md` — the six failure patterns from Aurora mapped to MindMap's Layer 4 protections, with implementation status for each
