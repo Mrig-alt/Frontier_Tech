@@ -1,16 +1,25 @@
-# Layer 3: Quantum ML Processing Engine
+# Layer 3: Cybersecurity & Compliance
 
-## Team Objective
-Develop the core classification and predictive engine utilizing state-of-the-art quantum and hybrid quantum-classical algorithms.
+Layer 3 is not a bolt-on. It is the reason any regulated industry would trust MindMap with their data infrastructure, and the reason MindMap is defensible as a long-term platform rather than a point solution.
 
-## Core Responsibilities & Requirements
-*   **Hardware Integration:** interfacing with IBM Quantum Infrastructure (specifically targeting 1000+ qubit systems like the Willow chip).
-*   **Algorithms:**
-    *   **Hybrid Solvers:** Implement hybrid quantum-classical solvers for complex sentiment analysis to outperform classical ML in detecting subtle cross-linguistic emotional signals.
-    *   **QFT Implementation:** Deploy Quantum Fourier Transform (QFT) to process teravoxel connectome datasets, reducing signal-to-noise ratios by ~30%.
-*   **Functionality:** Act as the core bridging intelligence, using Layer 1's behavioral data and Layer 2's neural maps to accurately predict cognitive states.
-*   **Inspiration:** Leverage methodologies from the June 2025 IBM + Inclusive Brains joint study for brain-machine interface (BMI) classification.
+Without Layer 3, MindMap cannot be sold to pharma (FDA oversight), insurance (FCA/EIOPA regulation), or government (national data laws). Layer 3 is what makes the platform sellable.
 
-## Collaboration
-*   **Upstream:** Layer 1 (Data) and Layer 2 (Neural Maps).
-*   **Downstream:** Outputs predictive cognitive intelligence APIs for the end-clients (Pharma, Insurance, Government).
+---
+
+## The HNDL Problem — Why This Layer Exists Now
+
+Harvest Now, Decrypt Later (HNDL) attacks are already active. Adversaries are capturing encrypted data today — insurance policy data, pharma trial data, government health records — with the intention of decrypting it once quantum computers reach sufficient power (estimated: 2028–2030 based on NIST timelines).
+
+AES-256, which most enterprises currently use, is not the problem. The problem is that data being encrypted today will still be sensitive in 2030. The Aurora case study (see `research/insurance/aurora-scenario.md`) shows exactly how this plays out: a CISO raises the HNDL risk in 2024, gets overruled as theoretical, and the organisation is exposed by 2026.
+
+MindMap's Layer 3 is built against this reality — not against a future threat.
+
+---
+
+## What Layer 3 Contains
+
+### Post-Quantum Cryptography (PQC)
+- NIST Post-Quantum Cryptography roadmap compliant (2024 standards: ML-KEM, ML-DSA, SLH-DSA)
+- All data in transit and at rest encrypted with PQC-ready algorithms
+- Migration path from classical to quantum-resistant encryption documented and staged
+- The HNDL fix is not "better locks" — it is data minimisation (see Decision 2 in the Aurora board memo): not keeping data that doesn't need to be kept so the payload is not worth harve
