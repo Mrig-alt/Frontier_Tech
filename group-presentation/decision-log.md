@@ -88,3 +88,34 @@ This file tracks every major decision made, when it was made, and why. It is the
 Not: *"Is quantum useful for insurance?"* — that was never in dispute and gets us no closer to a submission.
 
 **Status:** Feedback sent to teammate 2. Realignment in progress.
+
+---
+
+## 2026-05-26 — Executive narrative locked
+
+**Decision:** The group presentation has one central strategic thesis that every slide must support.
+
+> **MindMap helps insurers — and by extension pharma and public health — move from reactive, generalized decision-making to precise, data-driven, and future-ready behavioral intelligence.**
+
+**Why this framing:**
+- It is an executive-level disruption argument, not a technology pitch.
+- It directly maps to the brief's scoring criteria: business opportunity (criterion 1), technology fit (criterion 3), and overall impact (criterion 6).
+- It works across all three verticals: pharma moves from trial failure to cohort precision; insurance moves from backward-looking actuarial models to forward-looking behavioral signals; public health moves from stale polls to real-time population intelligence.
+
+**Slide logic:**
+- Slide 2 (Problem): three industries making decisions blind or backwards
+- Slide 3 (Platform): MindMap as the behavioral intelligence layer
+- Slide 4 (Verticals): each industry's specific move from reactive to precise
+- Slide 5 (Roadmap): H1 proves it, H2 scales precision, H3 locks the moat
+- Cybersecurity: the trust layer that makes regulated adoption possible in all three industries
+
+---
+
+## 2026-05-26 — Presentation structure confirmed
+
+**Status:** Roadmap locked. Executive narrative locked. Cybersecurity positioning locked. Next step is building the actual slide deck.
+
+**What is still needed before session 15:**
+- Slide deck (Canva / PPT) built to the `group-presentation/slide-logic-map.md` structure
+- Each teammate to confirm their individual folder content is current
+- One rehearsal pass to hit the 10-minute constraint

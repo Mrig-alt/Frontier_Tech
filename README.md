@@ -36,10 +36,14 @@ Aurora is not a cautionary tale from a different industry. It is a direct analog
 - `data/` – non-sensitive external datasets and processed tables (if used).
 - `tools/` – AI prompts and helper scripts used for research and automation.
 
-## Decisions Locked (as of 2026-05-04)
+## Decisions Locked (as of 2026-05-26)
 
 - Platform name: **MindMap**
 - Industries: Pharma (lead), Insurance (teammate 2), Public Health (teammate 3)
 - Entry product for Insurance: behavioral correlation study → claims prevention pilot (not neural pricing on day 1)
 - Pharma is H1 (validation); Insurance secret pilot runs in parallel; Public Health is H2/H3
-- Cybersecurity (PQC, zero-trust, differential privacy) is core to the platform, not a bolt-on
+- Cybersecurity (PQC, zero-trust, differential privacy) is the **trust layer** — core to regulated adoption, not a bolt-on
+- Insurance roadmap: H1 bespoke early-risk signals → H2 precision from real claims data → H3 data moat as platform
+- Quantum role: H2 accelerator for model refinement, not day-one product
+- Executive narrative: MindMap moves industries from reactive, generalized decision-making to precise behavioral intelligence
+- Slide deck build is the next open action before session 15
