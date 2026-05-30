@@ -1,14 +1,19 @@
-# Layer 2: Quantum ML Engine
+# Layer 2: Hybrid Quantum-Classical ML Engine
 
 This layer takes the behavioral signals from Layer 1 and classifies which patterns predict specific outcomes in each industry vertical. It is the intelligence core of MindMap.
 
 ## How It Works
-- **Engine:** Hybrid quantum-classical ML (IBM Quantum AI, Willow chip, 1000+ qubits)
-- **Problem type:** QUBO-type pattern recognition in high-dimensional behavioral data — problems better suited to quantum approaches than classical ML at scale
+- **Engine:** Hybrid quantum-classical ML — vendor-agnostic by design
+- **Problem type:** High-dimensional pattern recognition across behavioral signal combinations — problems where quantum-informed approaches offer advantages over purely classical ML at scale
 - **Output:** Industry-specific prediction scores
   - **Pharma:** Behavioral cohort targeting score for Phase II CNS trial recruitment
   - **Insurance:** Behavioral risk correlation score for claims event prediction
   - **Public Health:** Population sentiment index for policy response modeling
+
+## Architecture Note
+Layer 2 is designed to be quantum-ready, not quantum-dependent. Classical ML baselines run today. The hybrid quantum-classical layer is the R&D path as hardware matures. No specific chip or vendor is a dependency for day-one product viability.
+
+For the external validation evidence that the quantum ML frontier is moving in this direction, see: [`research/technologies/willow-validation-framing.md`](../../research/technologies/willow-validation-framing.md)
 
 ## Research Anchors
 - **IBM + Inclusive Brains BCI joint study (June 2025):** Quantum ML classifying neural circuit activation patterns — direct proof of concept for the behavioral signal → quantum classification pipeline
