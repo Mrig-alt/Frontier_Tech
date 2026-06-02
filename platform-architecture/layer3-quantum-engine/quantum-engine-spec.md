@@ -1,130 +1,81 @@
-# Layer 3 — Quantum ML Engine
+# Layer 3 — Quantum-ML Engine
 
 ## What This Layer Does
 
-Layer 3 is the inference engine of the MindMap platform. It takes structured behavioral indicators from Layer 2 and runs combinatorial inference at a scale and depth that classical machine learning cannot match — producing probability-weighted predictive outputs for each industry vertical.
+Layer 3 is the prediction engine. It takes the structured behavioral feature vectors from Layer 2 and evaluates them using a hybrid quantum-classical machine learning architecture to produce forward-looking probability scores for each industry vertical.
 
-This is where behavioral signals become **actionable predictions**: trial success probabilities for pharma, behavioural risk scores for insurers, outbreak early warnings for public health.
+This is where MindMap's core computational advantage sits.
 
 ---
 
-## Why Quantum ML — Not Classical ML
+## Why Quantum ML — Not Just Classical ML
 
-Classical ML (XGBoost, neural networks, regression) finds patterns in historical samples. It is excellent at recognising what has happened before.
+Classical ML finds patterns in samples. It is exceptionally good at identifying correlations in historical data and extrapolating them forward.
 
-Quantum ML evaluates **combinatorial interactions** — it asks a fundamentally different question: *what is the probability distribution across all possible combinations of signals firing simultaneously?*
+Quantum ML evaluates **combinatorial interactions** — it can simultaneously assess how multiple variables interact with each other across the full solution space, not just along the dimensions a classical model was trained to recognise.
 
-### The Insurance Example
-A classical model prices hurricane direct property damage based on historical claims.
+### Concrete Example
+
+A classical actuarial model prices hurricane risk by looking at:
+- Historical storm frequency in a region
+- Property values
+- Proximity to coastline
 
 A quantum model simultaneously evaluates:
-- Storm track probability
-- Infrastructure failure cascades
-- Supply chain disruption knock-ons
-- Population displacement patterns
-- Business interruption timelines
-- Secondary health claim spikes
-- Regional economic stress amplification
+- Storm trajectory + infrastructure vulnerability + supply chain disruption + business interruption exposure + population health response + secondary flood risk + reinsurance cascade effects
 
-All of these interact. Classical ML linearises them. Quantum ML holds the full combinatorial space open.
-
-### The Pharma Example
-A classical model identifies patients who match historical trial profiles.
-
-A quantum model simultaneously evaluates:
-- Which behavioral signal clusters predict treatment response
-- How those clusters interact with genetic and lifestyle indicators
-- Which combinations are predictive vs. confounded
-- How the signal combination shifts across geographies and time periods
-
-This is not a marginal improvement in accuracy. It is a different class of question.
+These are not independent variables — they interact. Quantum computing evaluates those interactions across the full combinatorial space. That is a fundamentally different question from what classical ML answers.
 
 ---
 
-## Hardware: Google Willow
+## Core Hardware: Google Willow
 
-- **Owner:** Google Quantum AI
-- **Announced:** December 2024
-- **Qubits:** 105
-- **Mode:** Hybrid quantum-classical
-- **Key capability:** Error correction at scale — Google Willow demonstrated that adding more qubits *reduces* error rates, solving a fundamental challenge that had blocked practical quantum ML
-- **Relevance to MindMap:** Willow's hybrid architecture is designed for exactly the class of combinatorial optimisation problems MindMap requires
+| Specification | Detail |
+|---|---|
+| **Name** | Google Willow |
+| **Owner** | Google Quantum AI |
+| **Announced** | December 2024 |
+| **Qubits** | 105 |
+| **Architecture** | Hybrid quantum-classical |
+| **Key capability** | Error correction at scale; combinatorial inference |
 
-> **Correction note:** All references to "IBM Willow" in earlier deck versions are incorrect. Willow is **Google's** chip. IBM's quantum platform is used separately for enterprise access in H2. There is no chip called "IBM Willow."
+> ⚠️ **Correction note:** Google Willow is a **Google** chip, announced December 2024 by Google Quantum AI. It is not an IBM product. Any reference to "IBM Willow" anywhere in project materials is incorrect and must be updated.
 
 ---
 
-## Implementation Roadmap: Three Phases
+## Three-Horizon Hardware Roadmap
 
-### H1 — Quantum-Inspired on Classical Hardware (Now → mid-2026)
-- **What:** Quantum-inspired algorithms running on classical hardware
-- **Why:** Full quantum hardware is not yet production-ready for enterprise workloads at scale
-- **How:** Tensor network methods, variational quantum eigensolver (VQE) simulations, and quantum annealing approximations run on GPU clusters
-- **Output:** Functionally equivalent to quantum ML for the signal volumes in the H1 insurance pilot
-- **Cost:** Standard cloud compute (AWS/GCP) — no quantum hardware licensing in H1
+| Horizon | Timeframe | Approach | Status |
+|---|---|---|---|
+| H1 | Now – mid 2026 | Quantum-inspired algorithms on classical hardware | Available today |
+| H2 | 2026 – 2027 | IBM Quantum enterprise access programs for scaling | Available via partnership |
+| H3 | 2028+ | Full quantum as hardware matures (Google Willow + successors) | Hardware maturing |
 
-### H2 — IBM Quantum Enterprise Access (2026–2027)
-- **What:** Run production inference workloads on IBM Quantum's enterprise access program
-- **Why:** As signal volume scales with pharma and public health verticals, quantum hardware provides meaningful accuracy and speed improvements over classical simulation
-- **How:** IBM Quantum Network enterprise access; MindMap workloads scheduled on available quantum hardware
-- **Output:** Pharma trial cohort targeting at full scale; insurance behavioral risk scoring at portfolio level
-
-### H3 — Full Quantum Infrastructure (2028–2030)
-- **What:** Dedicated quantum compute access as hardware matures
-- **Why:** Google Willow roadmap targets fault-tolerant quantum computing by 2029–2030; MindMap's architecture is designed to scale into this
-- **How:** Google Quantum AI partnership or direct enterprise hardware access
-- **Output:** Full combinatorial behavioral inference across all three verticals at global scale
+The H1 approach uses quantum-inspired algorithms — classical algorithms that mimic quantum computational approaches — to deliver meaningful performance improvements over standard ML while full quantum hardware access is being secured. This is not a compromise; it is the standard commercial deployment path for enterprise quantum ML in 2026.
 
 ---
 
 ## Output by Vertical
 
-### Pharma Output: Trial Success Probability Scores
-- **Input:** Behavioral signal clusters from Layer 2 matched to trial indication
-- **Output:** Probability-weighted cohort scoring — which patient populations show behavioral signals predictive of treatment response
-- **Format:** Quantum ML Biomarker API — a licensable classification engine for pharma trial sponsors
-- **Validation:** Pharma pilot results published publicly in H2 to establish scientific credibility
-
-### Insurance Output: Behavioral Risk Scores
-- **Input:** Behavioral signal clusters from Layer 2 matched to claims history (co-development partner data)
-- **Output:** Forward-looking behavioral risk scores by geography, demographic segment, and signal cluster
-- **Format:** API integration into insurer's underwriting model (layered on top of existing RPA/XGBoost, not replacing it)
-- **Use:** Claims prevention, not premium discrimination — consent-based, aggregated, regulatory safe by design
-
-### Public Health Output: Outbreak Early Warning & Population Sentiment
-- **Input:** Behavioral signal clusters from Layer 2 matched to disease surveillance data (WHO Sentinel)
-- **Output:** Outbreak probability scores by region; population sentiment dashboards in real time
-- **Format:** Dashboard API for public health agencies (ECDC, EU Commission, NHS, WHO)
-- **Lead time:** Targets 1–2 week early warning ahead of official surveillance reporting (validated by Ginsberg 2009 precedent)
+| Vertical | Layer 3 Output |
+|---|---|
+| **Insurance** | Behavioral risk scores; forward-looking claims probability; anomaly flags for prevention intervention |
+| **Pharma** | Trial success probability by behavioral cohort; patient response classification; recruitment targeting scores |
+| **Public Health** | Outbreak probability by region; population sentiment index; policy response modelling |
 
 ---
 
-## Competitive Position
+## Why No Competitor Has This Layer
 
-| Capability | MindMap | IBM Watson Health | Palantir | IQVIA.ai |
-|---|---|---|---|---|
-| Behavioral signal layer | ✅ | ❌ | ❌ | ❌ |
-| Quantum ML inference | ✅ | ⚠️ (hardware only, no behavioral data) | ❌ | ❌ |
-| Multi-vertical platform | ✅ | ❌ | ❌ | ❌ |
-| Post-quantum security | ✅ | ❌ | ❌ | ❌ |
-| EU AI Act compliance | ✅ | ⚠️ | ❌ | ❌ |
+- **IBM** has quantum hardware but no behavioral signal dataset to feed it
+- **Palantir** has prediction engines but no quantum ML and no behavioral data
+- **Google** has both the Willow hardware and the Trends data — but faces antitrust restrictions on exclusive vertical productisation
+- **IQVIA** serves large pharma with classical ML; no quantum engine exists in their stack
 
-**IBM has the quantum hardware but no behavioral dataset. MindMap has the behavioral dataset and the quantum ML layer. Remove either and the product does not exist.**
+MindMap is the only platform that combines the behavioral data (Layer 1), the mapping science (Layer 2), and the quantum-ML processing (Layer 3) in a single integrated architecture.
 
 ---
 
-## Key Technical Specs Summary
+## Chart Reference
 
-| Parameter | Spec |
-|---|---|  
-| Primary quantum hardware | Google Willow (105 qubits, hybrid quantum-classical) |
-| H1 interim approach | Quantum-inspired algorithms on classical GPU infrastructure |
-| H2 scale approach | IBM Quantum enterprise access |
-| Inference type | Combinatorial optimisation; forward probability distribution |
-| Primary ML paradigm | Hybrid quantum-classical variational circuits |
-| Output format | Probability-weighted industry indicator scores via API |
-| Latency target (H2) | Sub-hour batch inference; real-time streaming for public health |
-
----
-
-*Part of the MindMap 3-Layer Behavioral Intelligence Infrastructure. See `platform-architecture/mindmap-overview.md` for full platform context.*
+**Chart 1 — Three Horizons Roadmap** shows the H1/H2/H3 quantum hardware progression alongside all other platform milestones. **Chart 5 — HNDL Threat vs. MindMap PQC Readiness Timeline** shows where the quantum computing threat intersects with MindMap's security readiness. See `group-presentation/exhibits/` for chart data.
